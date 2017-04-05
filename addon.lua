@@ -3,6 +3,7 @@ local AceAddon = AceLibrary("AceAddon-2.0")
 local Tablet = AceLibrary("Tablet-2.0")
 
 local L = AceLibrary("AceLocale-2.2"):new("Cartographer_Mining")
+
 L:RegisterTranslations("enUS", function() return {
 	["Requires Mining"] = true,
 
@@ -26,10 +27,32 @@ L:RegisterTranslations("enUS", function() return {
 	["Small Thorium"] = true,
 	["Rich Thorium"] = true,
 	["Dark Iron"] = true,
-	["Fel Iron"] = true,
-	["Adamantite"] = true,
-	["Rich Adamantite"] = true,
-	["Khorium"] = true,
+} end)
+
+L:RegisterTranslations("ruRU", function() return {
+	["Requires Mining"] = "Требуется Горное дело",
+
+	["Filter"] = "Фильтр",
+	["Filter out minerals"] = "Фильтр по минералам",
+	
+	["Select all"] = "Выбрать все",
+	["Select none"] = "Убрать все",
+
+	["Vein"] = "жила",
+	["Deposit"] = "залежи",
+
+	["Copper"] = "Медная",
+	["Tin"] = "Оловянная",
+	["Iron"] = "железа",
+	["Silver"] = "Серебряная",
+	["Gold"] = "Золотая",
+	["Mithril"] = "Мифриловые",
+	["Truesilver"] = "истинного серебра",
+	["Thorium"] = "Ториевая",
+	["Thoriums"] = "ториевая",
+	["Small Thorium"] = "Малая ториевая",
+	["Rich Thorium"] = "Богатая ториевая",
+	["Dark Iron"] = "черного железа",
 } end)
 
 L:RegisterTranslations("deDE", function() return {
@@ -38,8 +61,8 @@ L:RegisterTranslations("deDE", function() return {
 	["Filter"] = "Filter",
 	["Filter out minerals"] = "Filtere Mineralien",
 	
-  ["Select all"] = "Alle ausw\195\164hlen",
-  ["Select none"] = "Nichts aus\195\164hlen",
+	["Select all"] = "Alle ausw\195\164hlen",
+	["Select none"] = "Nichts aus\195\164hlen",
 
 	["Vein"] = "Ader", 
 	["Deposit"] = "vorkommen", 
@@ -55,10 +78,6 @@ L:RegisterTranslations("deDE", function() return {
 	["Small Thorium"] = "Kleines Thorium", --check
 	["Rich Thorium"] = "Reiches Thorium", -- check
 	["Dark Iron"] = "Dunkeleisen",
-	["Fel Iron"] = "Teufelseisen", -- check
-	["Adamantite"] = "Adamantium", --check
-	["Rich Adamantite"] = "Reiches Adamantium", -- check
-	["Khorium"] = "Khorium", --check 
 } end)
 
 L:RegisterTranslations("koKR", function() return {
@@ -84,10 +103,6 @@ L:RegisterTranslations("koKR", function() return {
 	["Small Thorium"] = "작은 토륨",
 	["Rich Thorium"] = "풍부한 토륨",
 	["Dark Iron"] = "검은무쇠",
-    ["Fel Iron"] = "지옥무쇠",
-	["Adamantite"] = "아다만타이트",
-	["Rich Adamantite"] = "풍부한 아다만타이트",
-	["Khorium"] = "코륨",
 } end)
 
 local mod = Cartographer:NewModule(bs["Mining"], "AceConsole-2.0", "AceEvent-2.0")
@@ -159,30 +174,6 @@ mod.icon = {
 		width = 12,
 		height = 12
 	},
-	["Fel Iron"] = {
-    text = L["Fel Iron"],
-    path = "Interface\\Icons\\INV_Ore_FelIron",
-    width = 12,
-    height = 12
-  },
-  ["Adamantite"] = {
-    text = L["Adamantite"],
-    path = "Interface\\Icons\\INV_Ore_Adamantium",
-    width = 12,
-    height = 12
-  },
-  ["Rich Adamantite"] = {
-    text = L["Rich Adamantite"],
-    path = "Interface\\Icons\\INV_Ore_Adamantium_01",
-    width = 12,
-    height = 12
-  },
-  ["Khorium"] = {
-    text = L["Khorium"],
-    path = "Interface\\Icons\\INV_Ore_Khorium",
-    width = 12,
-    height = 12
-  }, 
 }
 
 local lua51
@@ -338,10 +329,6 @@ function mod:RegisterOre(what)
 			self:SetNote(L["Rich Thorium"])
 		elseif string.find(what, L["Small Thorium"] ) then
 			self:SetNote(L["Small Thorium"])
-		elseif string.find(what, L["Rich Adamantite"] ) then
-			self:SetNote(L["Rich Adamantite"])
-		elseif string.find(what, L["Fel Iron"] ) then
-			self:SetNote(L["Fel Iron"])
 		else
 			local w = string.gsub(what, " %(%d+%)", "")
 			if w then
