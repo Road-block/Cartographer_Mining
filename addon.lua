@@ -49,7 +49,6 @@ L:RegisterTranslations("ruRU", function() return {
 	["Mithril"] = "Мифриловые",
 	["Truesilver"] = "истинного серебра",
 	["Thorium"] = "Ториевая",
-	["Thoriums"] = "ториевая",
 	["Small Thorium"] = "Малая ториевая",
 	["Rich Thorium"] = "Богатая ториевая",
 	["Dark Iron"] = "черного железа",
