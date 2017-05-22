@@ -19,6 +19,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Copper"] = true,
 	["Tin"] = true,
 	["Iron"] = true,
+	["Bloodstone"] = true,
 	["Silver"] = true,
 	["Gold"] = true,
 	["Mithril"] = true,
@@ -49,6 +50,7 @@ L:RegisterTranslations("ruRU", function() return {
 	["Mithril"] = "Мифриловые",
 	["Truesilver"] = "истинного серебра",
 	["Thorium"] = "Ториевая",
+	["Thoriums"] = "ториевая",
 	["Small Thorium"] = "Малая ториевая",
 	["Rich Thorium"] = "Богатая ториевая",
 	["Dark Iron"] = "черного железа",
@@ -250,7 +252,7 @@ function mod:OnInitialize()
 		handler = self,
 	}
 	Cartographer:GetModule('Professions').addons[bs["Mining"]] = self
-	AceLibrary("AceConsole-2.0"):InjectAceOptionsTable(self, Cartographer.options.args[bs["Mining"]])
+	AceLibrary("AceConsole-2.0"):InjectAceOptionsTable(self, Cartographer.options.args[string.gsub(bs["Mining"], "%s", "-")])
 
 	if not Cartographer_MiningDB then
 		Cartographer_MiningDB = {}
