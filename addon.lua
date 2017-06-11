@@ -45,12 +45,12 @@ L:RegisterTranslations("ruRU", function() return {
 	["Copper"] = "Медная",
 	["Tin"] = "Оловянная",
 	["Iron"] = "железа",
+	["Bloodstone"] = "кровавая",
 	["Silver"] = "Серебряная",
 	["Gold"] = "Золотая",
 	["Mithril"] = "Мифриловые",
 	["Truesilver"] = "истинного серебра",
 	["Thorium"] = "Ториевая",
-	["Thoriums"] = "ториевая",
 	["Small Thorium"] = "Малая ториевая",
 	["Rich Thorium"] = "Богатая ториевая",
 	["Dark Iron"] = "черного железа",
@@ -106,7 +106,7 @@ L:RegisterTranslations("koKR", function() return {
 	["Dark Iron"] = "검은무쇠",
 } end)
 
-local mod = Cartographer:NewModule(bs["Mining"], "AceConsole-2.0", "AceEvent-2.0")
+local mod = Cartographer:NewModule("Mining", "AceConsole-2.0", "AceEvent-2.0")
 
 mod.icon = {
 	["Copper"] = {
@@ -130,6 +130,12 @@ mod.icon = {
 	["Iron"] = {
 		text = L["Iron"],
 		path = "Interface\\Icons\\INV_Ore_Iron_01",
+		width = 12,
+		height = 12
+	},
+	["Bloodstone"] = {
+		text = L["Bloodstone"],
+		path = "Interface\\Icons\\INV_Ore_Thorium_01",
 		width = 12,
 		height = 12
 	},
@@ -244,15 +250,15 @@ function mod:OnInitialize()
 		}
 	end
 
-	Cartographer.options.args[bs["Mining"]] = {
+	Cartographer.options.args["Mining"] = {
 		name = bs["Mining"],
 		desc = self.notes,
 		type = 'group',
 		args = aceopts,
 		handler = self,
 	}
-	Cartographer:GetModule('Professions').addons[bs["Mining"]] = self
-	AceLibrary("AceConsole-2.0"):InjectAceOptionsTable(self, Cartographer.options.args[string.gsub(bs["Mining"], "%s", "-")])
+	Cartographer:GetModule('Professions').addons["Mining"] = self
+	AceLibrary("AceConsole-2.0"):InjectAceOptionsTable(self, Cartographer.options.args["Mining"])
 
 	if not Cartographer_MiningDB then
 		Cartographer_MiningDB = {}
